@@ -8,6 +8,10 @@ namespace JwtBearerBreakingChange.Jwt;
 
 internal class CustomJwtTokenHandler : JwtSecurityTokenHandler
 {
+    // Expose the method to public
+    public SecurityToken SignatureValidatorHook(string token, TokenValidationParameters validationParameters)
+        => ValidateSignature(token, validationParameters);
+
     protected override JwtSecurityToken ValidateSignature(
         string token, TokenValidationParameters validationParameters)
     {

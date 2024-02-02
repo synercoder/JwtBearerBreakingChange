@@ -16,5 +16,7 @@ internal class CustomJwtBearerPostConfigureOptions : IPostConfigureOptions<JwtBe
     {
         options.SecurityTokenValidators.Clear();
         options.SecurityTokenValidators.Add(_validator);
+
+        options.TokenValidationParameters.SignatureValidator = _validator.SignatureValidatorHook;
     }
 }
